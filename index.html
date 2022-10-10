@@ -1,14 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Virtual Keyboard</title>
     <link rel="stylesheet" href="style.css">
-    <style src="./script.js" defer></style>
+    <script src="./script.js" defer></script>
+    <title>Virtual Keyboard</title>
 </head>
+
 <body>
-    
+    <section class="__virtualKeyboard-container">
+        <h1 class="title">Virtual Keyboard</h1>
+        <div class="__form-container">
+            <form action="./displayPage.html" class="glassmorphism">
+                <div class="form-item col-6 ps-0">
+                    <label>First Name</label><br/>
+                    <input name='first_name' type='text' required/>
+                </div>
+                <div class="form-item col-6 pe-0">
+                    <label>Last Name</label><br/>
+                    <input name='last_name' type='text' required/>
+                </div>
+                <div class="form-item col-12 ps-0 pe-0">
+                    <label>Content</label><br/>
+                    <textarea name='content' type='text' rows="3" required></textarea>
+                </div>
+                <div class="__options col-12">
+                    <button onclick="initKeyboard()" class="btn" type="button">open virtual Keyboard</button>
+                    <button type="submit" class="btn">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="keyboard">
+            <div class="row_1">
+                <button class="key d-none d-sm-block">`</button>
+                <button class="key">1</button>
+                <button class="key">2</button>
+                <button class="key">3</button>
+                <button class="key">4</button>
+                <button class="key">5</button>
+                <button class="key">6</button>
+                <button class="key">7</button>
+                <button class="key">8</button>
+                <button class="key">9</button>
+                <button class="key">0</button>
+                <button class="key d-none d-sm-block">-</button>
+                <button class="key d-none d-sm-block">=</button>
+                <button class="key d-none d-sm-block">Backspace</button>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>
