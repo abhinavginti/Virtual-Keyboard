@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800;900&display=swap');
 
-:root{
+:root {
     --color-theme: #FFCB05;
     --btn-width: 3.5vmax;
     --btn-height: 3vmax;
@@ -34,12 +34,12 @@ body {
 
 /*FORM CSS*/
 
-.__virtualKeyboard-container .__form-container{
+.__virtualKeyboard-container .__form-container {
     display: grid;
     place-items: center;
 }
 
-.glassmorphism{
+.glassmorphism {
     background: rgba(255, 255, 255, 0.28);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3.6px);
@@ -54,30 +54,33 @@ body {
     flex-wrap: wrap;
 }
 
-.__virtualKeyboard-container form .form-item{
+.__virtualKeyboard-container form .form-item {
     padding: 0.5rem;
     margin-right: 0 !important;
 }
 
-.__virtualKeyboard-container form .form-item input,.__virtualKeyboard-container form .form-item textarea{
+.__virtualKeyboard-container form .form-item input,
+.__virtualKeyboard-container form .form-item textarea {
     width: 100%;
     height: auto;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     background-color: #e8eeef;
     border: none;
     padding: 10px;
 }
-.__virtualKeyboard-container form .form-item label{
+
+.__virtualKeyboard-container form .form-item label {
     color: var(--color-theme);
     font-weight: 700;
 }
 
-.__virtualKeyboard-container form .form-item input:focus,.__virtualKeyboard-container form .form-item textarea:focus{
+.__virtualKeyboard-container form .form-item input:focus,
+.__virtualKeyboard-container form .form-item textarea:focus {
     outline: var(--color-theme) solid 2px;
 }
 
-@media (max-width : 576px){
-    .__virtualKeyboard-container form{
+@media (max-width : 576px) {
+    .__virtualKeyboard-container form {
         width: 80vw;
     }
 }
@@ -86,13 +89,13 @@ body {
 
 /*BTN CSS*/
 
-.__virtualKeyboard-container .__options{
+.__virtualKeyboard-container .__options {
     display: flex;
     justify-content: end;
     gap: 10px;
 }
 
-.btn{
+.btn {
     background-color: var(--color-theme);
     clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 100% 100%, 0% 100%);
     color: #00274c;
@@ -105,25 +108,29 @@ body {
     border: none;
 }
 
-.__virtualKeyboard-container .__form-container .__options .btn:nth-child(2){
+.__virtualKeyboard-container .__form-container .__options .btn:nth-child(2) {
     background: transparent;
     border: 2px solid #fff;
     color: #fff;
 }
 
-.__virtualKeyboard-container .__form-container .__options .btn:nth-child(1):hover{
+.__virtualKeyboard-container .__form-container .__options .btn:nth-child(1):hover {
     background-color: #fff;
     clip-path: polygon(0% 0%, calc(100% - 15px) 0%, 100% 50%, calc(100% - 15px) 100%, 0% 100%);
 }
 
-.__virtualKeyboard-container .__form-container .__options .btn:nth-child(2):hover{
+.__virtualKeyboard-container .__form-container .__options .btn:nth-child(2):hover {
     color: #000;
     background-color: #fff;
 }
 
-@media (max-width : 576px){
-    .btn{
+@media (max-width : 576px) {
+    .btn {
         padding: 0.7rem 0.75rem;
+    }
+
+    .__virtualKeyboard-container .__form-container .__options .btn:nth-child(1) {
+        width: 100%;
     }
 }
 
@@ -131,9 +138,9 @@ body {
 
 /*VIRTUAL KEYBOARD CSS*/
 
-.__virtualKeyboard-container .keyboard{
+.__virtualKeyboard-container .keyboard {
     background-color: #1d1d1d;
-    /* width: 95vw; */
+    width: 98vw;
     margin-left: auto;
     margin-right: auto;
     height: auto;
@@ -141,43 +148,97 @@ body {
     position: fixed;
     bottom: 3vh;
     left: 50%;
-    transform: translate(-50%,0);
-    padding: 15px;
+    transform: translate(-50%, 0);
+    padding: 10px 5px;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 }
 
-.__virtualKeyboard-container .keyboard .row_1{
+.__virtualKeyboard-container .keyboard .row_1,
+.__virtualKeyboard-container .keyboard .row_2,
+.__virtualKeyboard-container .keyboard .row_3,
+.__virtualKeyboard-container .keyboard .row_4,
+.__virtualKeyboard-container .keyboard .row_5 {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 5px;
+    margin-top: 5px;
 }
 
-.__virtualKeyboard-container .keyboard .row_1 .key:last-child{
-    width: calc(var(--btn-width) * 3);
+.__virtualKeyboard-container .keyboard .row_1 .key:last-child {
+    width: calc(var(--btn-width) * 3.25);
 }
 
-.__virtualKeyboard-container .keyboard .key{
+.__virtualKeyboard-container .keyboard .row_2 .key:first-child {
+    width: calc(var(--btn-width) * 2.1);
+}
+
+.__virtualKeyboard-container .keyboard .row_2 .key:last-child {
+    width: calc(var(--btn-width) * 1.9);
+}
+
+.__virtualKeyboard-container .keyboard .row_3 .key:first-child {
+    width: calc(var(--btn-width) * 2.6);
+}
+
+.__virtualKeyboard-container .keyboard .row_3 .key:last-child {
+    width: calc(var(--btn-width) * 2.5);
+}
+
+.__virtualKeyboard-container .keyboard .row_4 .key:first-child,
+.__virtualKeyboard-container .keyboard .row_4 .key:last-child {
+    width: calc(var(--btn-width) * 3.3);
+}
+
+.__virtualKeyboard-container .keyboard .row_5 .key:nth-child(4) {
+    width: calc(var(--btn-width) * 11);
+}
+
+.__virtualKeyboard-container .keyboard .key {
     background-color: transparent;
     border: none;
     color: #fff;
     background-color: rgb(53, 57, 53);
-    width: var(--btn-width);
-    height: var(--btn-height);
+    width: calc(var(--btn-width) * 1.15);
+    height: calc(var(--btn-height) * 1.15);
     /* padding: 1rem 0; */
     /* padding: 1rem 2rem; */
     cursor: pointer;
 }
 
-.__virtualKeyboard-container .keyboard .key:hover{
-    background-color: rgba(53, 57, 53,0.7);
+.__virtualKeyboard-container .keyboard .key:hover {
+    background-color: rgba(53, 57, 53, 0.7);
 }
 
-.d-none{
+.d-none {
     display: none;
 }
 
-@media (min-width:576px){
-    .d-sm-block{
+@media (min-width : 756px) {
+    .__virtualKeyboard-container .keyboard {
+        width: auto;
+    }
+}
+
+@media (min-width:576px) {
+    .d-sm-block {
         display: block;
+    }
+
+    .__virtualKeyboard-container .keyboard .row_1,
+    .__virtualKeyboard-container .keyboard .row_2,
+    .__virtualKeyboard-container .keyboard .row_3,
+    .__virtualKeyboard-container .keyboard .row_4,
+    .__virtualKeyboard-container .keyboard .row_5 {
+        display: flex;
+        justify-content: space-between;
+        gap: 5px;
+        margin-top: 5px;
+    }
+
+    .__virtualKeyboard-container .keyboard .key {
+        width: var(--btn-width);
+        height: var(--btn-height);
     }
 }
 
@@ -185,37 +246,38 @@ body {
 
 /*CARD CSS*/
 
-.__card-container{
+.__card-container {
     position: relative;
     min-height: 100vh;
     color: #fff;
 }
 
-.__card-container .card{
+.__card-container .card {
     width: 40%;
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
-.__card-container .card #header, .__card-container .card #content{
+.__card-container .card #header,
+.__card-container .card #content {
     padding: 1rem;
 }
 
-.__card-container .card #header .header_content{
+.__card-container .card #header .header_content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.__card-container .card #header .header_content .fullname{
+.__card-container .card #header .header_content .fullname {
     text-transform: uppercase;
     color: var(--color-theme);
     font-weight: bold;
 }
 
-.__card-container .card #header .header_content .btn{
+.__card-container .card #header .header_content .btn {
     border-radius: 50%;
     height: 40px;
     width: 40px;
@@ -225,7 +287,7 @@ body {
 }
 
 @media (max-width:576px) {
-    .__card-container .card{
+    .__card-container .card {
         width: 90%;
     }
 }
@@ -234,18 +296,19 @@ body {
 
 /*UTILITY CSS*/
 
-.col-6{
+.col-6 {
     width: 50%;
 }
-.col-12{
+
+.col-12 {
     width: 100%;
 }
 
-.pe-0{
+.pe-0 {
     padding-right: 0 !important;
 }
 
-.ps-0{
+.ps-0 {
     padding-left: 0 !important;
 }
 
