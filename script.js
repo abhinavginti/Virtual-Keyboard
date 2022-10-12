@@ -57,9 +57,6 @@ const initKeys = () => {
         })
         key.addEventListener('touchstart', () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
-            if (navigator.vibrate) {
-                window.navigator.vibrate(200);
-            }
             playKeySound()
         })
         key.addEventListener('touchend', () => {
