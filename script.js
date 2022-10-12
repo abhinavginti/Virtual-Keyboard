@@ -40,20 +40,24 @@ const initKeys = () => {
     keys.forEach(key => {
         key.addEventListener('mousedown', () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
+            if (navigator.vibrate) {
+                window.navigator.vibrate(200);
+            }
             keyInSound.play()
         })
         key.addEventListener('mouseup', () => {
             key.style.backgroundColor = localStorage.key_bg || '#353935';
-            keyInSound.play()
 
         })
         key.addEventListener('touchstart', () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
+            if (navigator.vibrate) {
+                window.navigator.vibrate(200);
+            }
             keyInSound.play()
         })
         key.addEventListener('touchend', () => {
             key.style.backgroundColor = localStorage.key_bg || '#353935';
-            keyInSound.play()
 
         })
     })
@@ -170,6 +174,14 @@ const toggleShift = (e) => {
     })
 }
 
+const toggleKeyboardFace = (_source, _target) => {
+    const source = document.querySelector(_source)
+    const target = document.querySelector(_target)
+    source.style.zIndex = -1;
+    source.style.display = 'none'
+    target.style.zIndex = 1;
+    target.style.display = 'block'
+}
 
 //KEYBOARD COLOR JS
 
