@@ -40,13 +40,15 @@ const initKeys = () => {
     const playKeySound = () => {
         keyInSound.pause();
         keyInSound.currentTime = 0;
-        if (navigator.vibrate) {
-            window.navigator.vibrate(100);
-        }
         keyInSound.play()
     }
 
     keys.forEach(key => {
+        key.addEventListener('click', () => {
+            if (navigator.vibrate) {
+                window.navigator.vibrate(100);
+            }
+        })
         key.addEventListener('mousedown', () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
             playKeySound()
