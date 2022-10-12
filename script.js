@@ -37,13 +37,19 @@ const initKeys = () => {
         })
     })
 
+    const playKeySound = () => {
+        keyInSound.pause();
+        keyInSound.currentTime = 0;
+        if (navigator.vibrate) {
+            window.navigator.vibrate(100);
+        }
+        keyInSound.play()
+    }
+
     keys.forEach(key => {
         key.addEventListener('mousedown', () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
-            if (navigator.vibrate) {
-                window.navigator.vibrate(200);
-            }
-            keyInSound.play()
+            playKeySound()
         })
         key.addEventListener('mouseup', () => {
             key.style.backgroundColor = localStorage.key_bg || '#353935';
@@ -54,7 +60,7 @@ const initKeys = () => {
             if (navigator.vibrate) {
                 window.navigator.vibrate(200);
             }
-            keyInSound.play()
+            playKeySound()
         })
         key.addEventListener('touchend', () => {
             key.style.backgroundColor = localStorage.key_bg || '#353935';
