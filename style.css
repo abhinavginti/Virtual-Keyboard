@@ -148,10 +148,10 @@ body {
     position: fixed;
     bottom: 3vh;
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translate(100%, 0);
     padding: 10px 5px;
     opacity: 0;
-    transition: opacity 1s ease-in-out, height 1s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 .__virtualKeyboard-container .keyboard .row_1,
