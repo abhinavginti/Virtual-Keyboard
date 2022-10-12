@@ -79,9 +79,9 @@ body {
     outline: var(--color-theme) solid 2px;
 }
 
-@media (max-width : 576px) {
+@media (max-width : 756px) {
     .__virtualKeyboard-container form {
-        width: 80vw;
+        width: 95vw;
     }
 }
 
@@ -199,8 +199,8 @@ body {
     border: none;
     color: inherit;
     background-color: rgb(53, 57, 53);
-    width: calc(var(--btn-width) * 1.15);
-    height: calc(var(--btn-height) * 1.15);
+    width: calc(var(--btn-width) * 1.25);
+    height: calc(var(--btn-height) * 1.5);
     /* padding: 1rem 0; */
     /* padding: 1rem 2rem; */
     cursor: pointer;
@@ -210,18 +210,19 @@ body {
     border: 1px solid #30E3CA;
 }
 
-.__virtualKeyboard-container .keyboard .key:hover {
-    /* background-color: rgba(53, 57, 53, 0.7) !important; */
-}
+/* .__virtualKeyboard-container .keyboard .key:hover {
+    background-color: rgba(53, 57, 53, 0.7) !important;
+} */
 
 .__virtualKeyboard-container .keyboard .__options{
     display: flex;
     justify-content: end;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
 }
 .__virtualKeyboard-container .keyboard .__options .__option{
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 5px;
 }
 
@@ -247,6 +248,9 @@ body {
 @media (min-width:576px) {
     .d-sm-block {
         display: block;
+    }
+    .d-sm-none{
+        display: none;
     }
 
     .__virtualKeyboard-container .keyboard .row_1,

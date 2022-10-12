@@ -24,28 +24,51 @@ const initKeys = () => {
                 document.querySelector('.focused').classList.remove('focused');
             } catch (err) { console.log(err) }
             input.classList.add('focused');
+            if (input.classList.contains('textarea') && window.innerWidth <= 756) {
+                input.setAttribute('readonly', 'readonly');
+                input.setAttribute('disabled', 'disabled')
+                setTimeout(() => {
+                    input.blur();
+                    input.removeAttribute('readonly', 'readonly');
+                    input.removeAttribute('disabled', 'disabled')
+                }, 100)
+            }
         })
     })
 
     keys.forEach(key => {
-        key.addEventListener('mousedown',() => {
+        key.addEventListener('mousedown', () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
         })
-        key.addEventListener('mouseup',() => {
+        key.addEventListener('mouseup', () => {
             key.style.backgroundColor = localStorage.key_bg || '#353935';
         })
-        key.addEventListener('touchstart',() => {
+        key.addEventListener('touchstart', () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
         })
-        key.addEventListener('touchend',() => {
+        key.addEventListener('touchend', () => {
             key.style.backgroundColor = localStorage.key_bg || '#353935';
         })
-    }) 
+    })
 
     changeKeyboardColor(localStorage.keyboard_bg)
     changeKeyBG(localStorage.key_bg)
     changeKeyColor(localStorage.key_color)
 
+}
+
+const enterChar = (inp) => {
+    const focusedInp = document.querySelector('.focused')
+    focusedInp.focus()
+    const selStr = focusedInp.selectionStart;
+    if ((SHIFT_EN || selStr === 0) && ['\t', '\n', ' '].some(en => {
+        if (en === inp) return true;
+        return false;
+    })) return
+    focusedInp.value = focusedInp.value.substring(0, selStr) + inp + focusedInp.value.substring(selStr, focusedInp.value.length);
+    focusedInp.selectionStart = selStr + 1
+    removeSelection()
+    if (SHIFT_EN) toggleShift()
 }
 
 const toggleKeyboard = (e) => {
@@ -90,20 +113,6 @@ const backspace = () => {
     // focusedInp.value = focusedInp.value.substring(0, focusedInp.value.length - 1)
 }
 
-const enterChar = (inp) => {
-    const focusedInp = document.querySelector('.focused')
-    focusedInp.focus()
-    const selStr = focusedInp.selectionStart;
-    if ((SHIFT_EN || selStr === 0) && ['\t', '\n', ' '].some(en => {
-        if (en === inp) return true;
-        return false;
-    })) return
-    focusedInp.value = focusedInp.value.substring(0, selStr) + inp + focusedInp.value.substring(selStr, focusedInp.value.length);
-    focusedInp.selectionStart = selStr + 1
-    removeSelection()
-    if (SHIFT_EN) toggleShift()
-}
-
 const toggleCaps = (e) => {
 
     if (SHIFT_EN) return
@@ -117,9 +126,17 @@ const toggleCaps = (e) => {
             }
         })
         e.classList.add('selected')
+        if (window.innerWidth <= 576) {
+            e.innerHTML = '<i class="fa-solid fa-lock"></i>'
+        }
     } else {
         document.querySelector('.selected').classList.remove('selected')
-        initKeys()
+        if (window.innerWidth <= 576) {
+            e.innerHTML = '<i class="fa-solid fa-lock-open"></i>'
+        }
+        withShiftKeys.forEach((key, idx) => {
+            key.innerHTML = key.dataset.key
+        })
     }
 }
 
@@ -130,7 +147,13 @@ const toggleShift = (e) => {
 
     if (SHIFT_EN) {
         e.classList.add('selected')
+        if (window.innerWidth <= 576) {
+            e.innerHTML = '<i class="far fa-arrow-alt-circle-up"></i>'
+        }
     } else {
+        if (window.innerWidth <= 576) {
+            document.querySelector('.selected').innerHTML = '<i class="far fa-circle-up"></i>'
+        }
         document.querySelector('.selected').classList.remove('selected')
     }
 
@@ -149,7 +172,7 @@ const key_color = document.querySelector('#key_color')
 
 
 const changeKeyboardColor = (e) => {
-    if (e === '' || e === undefined){
+    if (e === '' || e === undefined) {
         keyboard_bg.value = '#1d1d1d'
         return;
     }
@@ -159,7 +182,7 @@ const changeKeyboardColor = (e) => {
 }
 
 const changeKeyBG = (e) => {
-    if (e === '' || e === undefined){
+    if (e === '' || e === undefined) {
         key_bg.value = '#353935'
         return
     }
@@ -171,7 +194,7 @@ const changeKeyBG = (e) => {
 }
 
 const changeKeyColor = (e) => {
-    if (e === '' || e === undefined){
+    if (e === '' || e === undefined) {
         key_color.value = '#ffffff'
         return
     }
