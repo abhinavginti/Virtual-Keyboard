@@ -32,13 +32,13 @@ const initKeys = () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
         })
         key.addEventListener('mouseup',() => {
-            changeKeyBG(localStorage.key_bg)
+            key.style.backgroundColor = localStorage.key_bg || '#353935';
         })
         key.addEventListener('touchstart',() => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
         })
         key.addEventListener('touchend',() => {
-            changeKeyBG(localStorage.key_bg)
+            key.style.backgroundColor = localStorage.key_bg || '#353935';
         })
     }) 
 
