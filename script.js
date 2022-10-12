@@ -6,7 +6,8 @@ const keys = document.querySelectorAll('.key')
 const inputs = document.querySelectorAll('.inp')
 const keyboard = document.querySelector('#keyboard')
 
-
+const keyInSound = new Audio('./Sound/KeyInSound.mpeg')
+// const keyOutSound = new Audio('./Sound/KeyOutSound.mpeg')
 
 const initKeys = () => {
     withShiftKeys.forEach((key, idx) => {
@@ -39,15 +40,21 @@ const initKeys = () => {
     keys.forEach(key => {
         key.addEventListener('mousedown', () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
+            keyInSound.play()
         })
         key.addEventListener('mouseup', () => {
             key.style.backgroundColor = localStorage.key_bg || '#353935';
+            keyInSound.play()
+
         })
         key.addEventListener('touchstart', () => {
             key.style.backgroundColor = 'rgba(53, 57, 53, 0.7)'
+            keyInSound.play()
         })
         key.addEventListener('touchend', () => {
             key.style.backgroundColor = localStorage.key_bg || '#353935';
+            keyInSound.play()
+
         })
     })
 
@@ -113,6 +120,7 @@ const backspace = () => {
     // focusedInp.value = focusedInp.value.substring(0, focusedInp.value.length - 1)
 }
 
+//toggle CAPS_EN
 const toggleCaps = (e) => {
 
     if (SHIFT_EN) return
