@@ -190,14 +190,14 @@ body {
     width: calc(var(--btn-width) * 3.3);
 }
 
-.__virtualKeyboard-container .keyboard .row_5 .key:nth-child(4) {
+.__virtualKeyboard-container .keyboard .row_5 .key:first-child {
     width: calc(var(--btn-width) * 11);
 }
 
 .__virtualKeyboard-container .keyboard .key {
     background-color: transparent;
     border: none;
-    color: #fff;
+    color: inherit;
     background-color: rgb(53, 57, 53);
     width: calc(var(--btn-width) * 1.15);
     height: calc(var(--btn-height) * 1.15);
@@ -206,13 +206,37 @@ body {
     cursor: pointer;
 }
 
+.__virtualKeyboard-container .keyboard .key.selected {
+    border: 1px solid #30E3CA;
+}
+
 .__virtualKeyboard-container .keyboard .key:hover {
-    background-color: rgba(53, 57, 53, 0.7);
+    /* background-color: rgba(53, 57, 53, 0.7) !important; */
+}
+
+.__virtualKeyboard-container .keyboard .__options{
+    display: flex;
+    justify-content: end;
+    font-size: 0.8rem;
+}
+.__virtualKeyboard-container .keyboard .__options .__option{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.__virtualKeyboard-container .keyboard .__options .__option input[type="color"] {
+    height: 3vh;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
 }
 
 .d-none {
     display: none;
 }
+
+
 
 @media (min-width : 756px) {
     .__virtualKeyboard-container .keyboard {
@@ -228,8 +252,7 @@ body {
     .__virtualKeyboard-container .keyboard .row_1,
     .__virtualKeyboard-container .keyboard .row_2,
     .__virtualKeyboard-container .keyboard .row_3,
-    .__virtualKeyboard-container .keyboard .row_4,
-    .__virtualKeyboard-container .keyboard .row_5 {
+    .__virtualKeyboard-container .keyboard .row_4 {
         display: flex;
         justify-content: space-between;
         gap: 5px;
@@ -239,6 +262,10 @@ body {
     .__virtualKeyboard-container .keyboard .key {
         width: var(--btn-width);
         height: var(--btn-height);
+    }
+
+    .__virtualKeyboard-container .keyboard .__options{
+        font-size: small;
     }
 }
 

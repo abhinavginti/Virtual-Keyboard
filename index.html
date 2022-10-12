@@ -10,7 +10,7 @@
     <title>Virtual Keyboard</title>
 </head>
 
-<body>
+<body onload="initKeys()">
     <section class="__virtualKeyboard-container">
         <h1 class="title">Virtual Keyboard</h1>
         <div class="__form-container">
@@ -28,12 +28,26 @@
                     <textarea name='content' class="inp" type='text' required rows='4'></textarea>
                 </div>
                 <div class="__options col-12">
-                    <button onclick="toggleKeyboard()" class="btn" type="button">open virtual Keyboard</button>
+                    <button onclick="toggleKeyboard(this)" class="btn" type="button">open virtual Keyboard</button>
                     <button type="submit" class="btn">Submit</button>
                 </div>
             </form>
         </div>
         <div class="keyboard" id="keyboard">
+            <div class="__options">
+                <div class="__option">
+                    <label>Keyboard BG</label>
+                    <input oninput="changeKeyboardColor(this.value)" id="keyboard_bg" type="color">
+                </div>
+                <div class="__option">
+                    <label>Key BG</label>
+                    <input oninput="changeKeyBG(this.value)" id="key_bg" type="color">
+                </div>
+                <div class="__option">
+                    <label>Key Color</label>
+                    <input oninput="changeKeyColor(this.value)" id="key_color" type="color">
+                </div>
+            </div>
             <div class="row_1">
                 <button class="key sp d-none d-sm-block" data-key="`" data-shiftkey="~"></button>
                 <button class="key sp" data-key="1" data-shiftkey="!"></button>
@@ -51,7 +65,7 @@
                 <button class="key d-none d-sm-block" onclick="backspace()">Backspace</button>
             </div>
             <div class="row_2">
-                <button class="key d-none d-sm-block">Tab</button>
+                <button onclick="enterChar('\t')" class="key d-none d-sm-block">Tab</button>
                 <button class="key" data-key="q" data-shiftkey="Q"></button>
                 <button class="key" data-key="w" data-shiftkey="W"></button>
                 <button class="key" data-key="e" data-shiftkey="E"></button>
@@ -67,7 +81,7 @@
                 <button class="key sp d-none d-sm-block" data-key="\" data-shiftkey="|"></button>
             </div>
             <div class="row_3">
-                <button onclick="toggleCaps()" class="key d-none d-sm-block">Caps<br>Lock</button>
+                <button onclick="toggleCaps(this)" class="key d-none d-sm-block">Caps<br>Lock</button>
                 <button class="key" data-key="a" data-shiftkey="A"></button>
                 <button class="key" data-key="s" data-shiftkey="S"></button>
                 <button class="key" data-key="d" data-shiftkey="D"></button>
@@ -79,10 +93,10 @@
                 <button class="key" data-key="l" data-shiftkey="L"></button>
                 <button class="key sp d-none d-sm-block" data-key=";" data-shiftkey=":"></button>
                 <button class="key sp d-none d-sm-block" data-key="'" data-shiftkey='"'></button>
-                <button class="key d-none d-sm-block" onclick="enterFunc()">Enter</button>
+                <button class="key d-none d-sm-block" onclick="enterChar('\n')">Enter</button>
             </div>
             <div class="row_4">
-                <button onclick="toggleShift()" class="key d-none d-sm-block">Shift</button>
+                <button onclick="toggleShift(this)" class="key d-none d-sm-block">Shift</button>
                 <button class="key" data-key="z" data-shiftkey="Z"></button>
                 <button class="key" data-key="x" data-shiftkey="X"></button>
                 <button class="key" data-key="c" data-shiftkey="C"></button>
@@ -93,16 +107,16 @@
                 <button class="key sp d-none d-sm-block" data-key="," data-shiftkey="<"></button>
                 <button class="key sp d-none d-sm-block" data-key="." data-shiftkey=">"></button>
                 <button class="key sp d-none d-sm-block" data-key="/" data-shiftkey="?"></button>
-                <button onclick="toggleShift()" class="key d-none d-sm-block">Shift</button>
+                <button onclick="toggleShift(this)" class="key d-none d-sm-block">Shift</button>
             </div>
             <div class="row_5">
-                <button class="key d-none d-sm-block">Ctrl</button>
+                <!-- <button class="key d-none d-sm-block">Ctrl</button>
                 <button class="key d-none d-sm-block">Fn</button>
-                <button class="key d-none d-sm-block">Alt</button>
-                <button onclick="spacebarFunc()" class="key">Spacebar</button>
-                <button class="key d-none d-sm-block">Alt</button>
+                <button class="key d-none d-sm-block">Alt</button> -->
+                <button onclick="enterChar(' ')" class="key">Spacebar</button>
+                <!-- <button class="key d-none d-sm-block">Alt</button>
                 <button class="key d-none d-sm-block">Fn</button>
-                <button class="key d-none d-sm-block">Ctrl</button>
+                <button class="key d-none d-sm-block">Ctrl</button> -->
             </div>
         </div>
     </section>
