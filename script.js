@@ -25,6 +25,9 @@ const initKeys = () => {
                 document.querySelector('.focused').classList.remove('focused');
             } catch (err) { console.log(err) }
             input.classList.add('focused');
+            if(V_KEYBOARD &&  window.innerWidth <= 756){
+                input.setAttribute('inputmode','none');
+            }else input.removeAttribute('inputmode')
             if (input.classList.contains('textarea') && window.innerWidth <= 756) {
                 input.setAttribute('readonly', 'readonly');
                 input.setAttribute('disabled', 'disabled')
@@ -232,7 +235,7 @@ const changeKeyColor = (e) => {
 
 //DISPLAY PAGE JS
 
-const goBack = () => window.history.back()
+const goBack = () => window.location.replace('/')
 
 const populateData = () => {
     const urlParams = new URLSearchParams(window.location.search)
